@@ -1,0 +1,104 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background-primary: #f8f8f8;
+    --background-secondary: #ffffff;
+    --text-primary: #6e6b7b;
+    --border-color: #ebe9f1;
+    --card-bg: #ffffff;
+
+    --primary: 99 102 241;
+    --primary-foreground: 255 255 255;
+
+    --secondary: 249 250 251;
+    --secondary-foreground: 107 114 128;
+
+    --accent: 243 244 246;
+    --accent-foreground: 107 114 128;
+
+    --destructive: 239 68 68;
+    --destructive-foreground: 255 255 255;
+
+    --ring: 99 102 241;
+
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background-primary: #283046;
+    --background-secondary: #161d31;
+    --text-primary: #d0d2d6;
+    --border-color: #3b4253;
+    --card-bg: #283046;
+  }
+}
+
+@layer components {
+  .card {
+    @apply bg-[var(--card-bg)] border border-[var(--border-color)] rounded-lg shadow-sm transition-all duration-300;
+  }
+
+  .menu-item {
+    @apply flex items-center px-4 py-2 text-[var(--text-primary)] hover:bg-primary/10 rounded-lg transition-all duration-200;
+  }
+
+  .menu-item.active {
+    @apply bg-primary text-white hover:bg-primary/90;
+  }
+
+  .animated-card {
+    @apply transform transition-all duration-200 hover:scale-[1.02] hover:shadow-lg;
+  }
+
+  .gradient-border {
+    @apply relative before:absolute before:inset-0 before:p-[1px] before:bg-gradient-to-r before:from-primary/50 before:to-accent/50 before:rounded-lg before:-z-10;
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent;
+  }
+
+  .bg-gradient {
+    @apply bg-gradient-to-r from-primary to-accent;
+  }
+}
+
+/* Base styles */
+body {
+  @apply bg-background-primary text-text-primary transition-colors duration-300;
+}
+
+/* Transitions */
+.page-transition-enter {
+  @apply opacity-0 translate-y-4;
+}
+
+.page-transition-enter-active {
+  @apply opacity-100 translate-y-0 transition-all duration-300 ease-out;
+}
+
+.page-transition-exit {
+  @apply opacity-100 translate-y-0;
+}
+
+.page-transition-exit-active {
+  @apply opacity-0 -translate-y-4 transition-all duration-300 ease-in;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  @apply w-2;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-background-secondary;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-primary/20 rounded-full hover:bg-primary/30 transition-colors;
+}
